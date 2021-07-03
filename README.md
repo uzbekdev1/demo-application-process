@@ -26,6 +26,6 @@
 
 # Containerize application:
 
-- Build image (`docker build -t demo-api .`)
-- Run image (`docker run -p 5000:80 demo-api`)
+- Build image (`docker-compose build`)
+- Run image (`docker-compose up`)
 - Open in this portal `http://localhost:5000`
