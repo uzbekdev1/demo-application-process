@@ -28,3 +28,12 @@
 - Build image (`docker-compose build` or `docker -t demo-api build .`)
 - Run image (`docker-compose up` or `docker run demo-api`)
 - Open in this portal `http://localhost:5000`
+ 
+# Register hub:
+
+- Create new repo(`https://hub.docker.com/repositories`)
+- Login hube (`docker login`)
+- Tag image (`docker tag levdeo/demo-api:latest levdeo/demo-api:latest`)
+- Push image `docker push levdeo/demo-api`
+- Pull image `docker pull levdeo/demo-api:latest`
+- Run image `docker run -it levdeo/demo-api:latest`
