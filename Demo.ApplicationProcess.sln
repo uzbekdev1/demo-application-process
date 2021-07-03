@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D160F9ED-DC66-456F-9B5E-606B95CB61F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CAD81EC6-9A0B-4F06-813A-27FD0AB27D1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.ApplicationProcess.Domain", "src\Demo.ApplicationProcess.Domain\Demo.ApplicationProcess.Domain.csproj", "{A7B7F3CE-32AD-45FF-A42C-D7F1071F6D70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.ApplicationProcess.Data", "src\Demo.ApplicationProcess.Data\Demo.ApplicationProcess.Data.csproj", "{FC43F974-31EE-43EF-9852-8FA97DCE0801}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.ApplicationProcess.Api", "src\Demo.ApplicationProcess.Api\Demo.ApplicationProcess.Api.csproj", "{8BEC1C62-E21B-4476-9067-F6A3F57DAE06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.ApplicationProcess.IntegrationTest", "tests\Demo.ApplicationProcess.IntegrationTest\Demo.ApplicationProcess.IntegrationTest.csproj", "{567C8881-56E9-42B1-92AE-4F36DCE09C91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.ApplicationProcess.UnitTest", "tests\Demo.ApplicationProcess.UnitTest\Demo.ApplicationProcess.UnitTest.csproj", "{B57FCA6D-1BDE-44D1-9501-D49368D02BD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7B7F3CE-32AD-45FF-A42C-D7F1071F6D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B7F3CE-32AD-45FF-A42C-D7F1071F6D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B7F3CE-32AD-45FF-A42C-D7F1071F6D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B7F3CE-32AD-45FF-A42C-D7F1071F6D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC43F974-31EE-43EF-9852-8FA97DCE0801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC43F974-31EE-43EF-9852-8FA97DCE0801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC43F974-31EE-43EF-9852-8FA97DCE0801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC43F974-31EE-43EF-9852-8FA97DCE0801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BEC1C62-E21B-4476-9067-F6A3F57DAE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BEC1C62-E21B-4476-9067-F6A3F57DAE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BEC1C62-E21B-4476-9067-F6A3F57DAE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BEC1C62-E21B-4476-9067-F6A3F57DAE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{567C8881-56E9-42B1-92AE-4F36DCE09C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567C8881-56E9-42B1-92AE-4F36DCE09C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567C8881-56E9-42B1-92AE-4F36DCE09C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567C8881-56E9-42B1-92AE-4F36DCE09C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57FCA6D-1BDE-44D1-9501-D49368D02BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57FCA6D-1BDE-44D1-9501-D49368D02BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57FCA6D-1BDE-44D1-9501-D49368D02BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57FCA6D-1BDE-44D1-9501-D49368D02BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7B7F3CE-32AD-45FF-A42C-D7F1071F6D70} = {D160F9ED-DC66-456F-9B5E-606B95CB61F4}
+		{FC43F974-31EE-43EF-9852-8FA97DCE0801} = {D160F9ED-DC66-456F-9B5E-606B95CB61F4}
+		{8BEC1C62-E21B-4476-9067-F6A3F57DAE06} = {D160F9ED-DC66-456F-9B5E-606B95CB61F4}
+		{567C8881-56E9-42B1-92AE-4F36DCE09C91} = {CAD81EC6-9A0B-4F06-813A-27FD0AB27D1C}
+		{B57FCA6D-1BDE-44D1-9501-D49368D02BD8} = {CAD81EC6-9A0B-4F06-813A-27FD0AB27D1C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D24DED5-E84A-4947-9414-EA5CBE309413}
+	EndGlobalSection
+EndGlobal
