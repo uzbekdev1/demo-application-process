@@ -22,3 +22,10 @@
 - run Test API layer (`dotnet test`)
 - Navigate to Unit Test projet (` cd .\Demo.ApplicationProcess.UnitTest\`)
 - run Test Data acess layer (`dotnet test`)
+
+
+# Containerize application:
+
+- Build image (`docker build -t demo-api .`)
+- Run image (`docker run -p 5000:80 demo-api`)
+- Open in this portal `http://localhost:5000`
