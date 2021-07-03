@@ -23,9 +23,8 @@
 - Navigate to Unit Test projet (` cd .\Demo.ApplicationProcess.UnitTest\`)
 - run Test Data acess layer (`dotnet test`)
 
-
 # Containerize application:
 
-- Build image (`docker-compose build`)
-- Run image (`docker-compose up`)
+- Build image (`docker-compose build` or `docker -t demo-api build .`)
+- Run image (`docker-compose up` or `docker run demo-api`)
 - Open in this portal `http://localhost:5000`
