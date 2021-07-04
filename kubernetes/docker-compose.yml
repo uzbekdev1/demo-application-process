@@ -3,10 +3,11 @@ version: "3.9"
 services:
   api:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
+    image: levdeo/demoapi
     environment:
-      ASPNETCORE_URLS: http://+:80
+      ASPNETCORE_URLS: http://+:5000
     ports:
-      - "5000:80"
+      - "80:5000"
     restart: always

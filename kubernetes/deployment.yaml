@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: demoapi-pod
+      version: v1
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: demoapi-pod
+        version: v1
+    spec:
+      containers:
+        - name: demoapi-container
+          image: "levdeo/demoapi"
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:80
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
