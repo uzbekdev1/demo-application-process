@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demoapi-pod
+  labels:
+    app: demoapi-pod
+spec:
+  containers:
+    - name: demoapi-container
+      image: "levdeo/demoapi"
+      ports:
+        - containerPort: 80
