@@ -46,6 +46,22 @@
 - Run image (`docker-compose up`)
 - Open in this portal (`http://localhost:5000`)
 
+# Haproxy balancer:
+
+- Go to root (`cd .\haproxy`)
+- Build image (`docker-compose build`)
+- Run image (`docker-compose up`)
+- Open in this portal (`http://localhost:5000`)
+- Admin acess (`http://localhost:5001`)
+
+# Envoy balancer:
+
+- Go to root (`cd .\envoy`)
+- Build image (`docker-compose build`)
+- Run image (`docker-compose up`)
+- Open in this portal (`http://localhost:5000`)
+- Stats profile (`http://localhost:5000/stats`)
+
 # Kubernetes cluster:
 
 - Go to templates (`cd .\kubernetes`)
@@ -56,6 +72,6 @@
 - Create pod (`kubectl create -f pod.yaml`)
 - Services list (`kubectl get pods`)
 - Troubleshooting service (`kubectl describe service demoapi-service`)
-- Port forward (`kubectl port-forward service/demoapi-service 5000:80`)
+- Port forward (`kubectl port-forward service/demoapi-service 5000:5000`)
 - Open in this portal (`http://localhost:5000`)
 - Cleaning up (`kubectl delete services demoapi-service`,`kubectl delete deployment demoapi-deployment`,`kubectl delete pod demoapi-pod`)
