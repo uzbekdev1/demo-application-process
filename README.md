@@ -25,11 +25,11 @@
 
 # Containerize application:
 
-- Build image (`docker-compose build` or `docker -t demo-api build .`)
-- Run image (`docker-compose up` or `docker run demo-api`)
+- Build image (`docker -t demo-api build .`)
+- Run image (`docker run demo-api`)
 - Open in this portal (`http://localhost:5000`)
 
-# Register hub:
+# Register image:
 
 - Create new repo (`https://hub.docker.com/repositories`)
 - Login hube (`docker login`)
@@ -39,8 +39,16 @@
 - Run image (`docker run -it levdeo/demoapi`)
 - Open in this portal (`http://localhost:5000`)
 
-# Kubernete cluster:
+# Nginx balancer:
 
+- Go to root (`cd .\nginx`)
+- Build image (`docker-compose build`)
+- Run image (`docker-compose up`)
+- Open in this portal (`http://localhost:5000`)
+
+# Kubernetes cluster:
+
+- Go to templates (`cd .\kubernetes`)
 - Create deployment (`kubectl create -f deployment.yaml`)
 - Verify deployment (`kubectl get deployment`)
 - Create service (`kubectl create -f service.yaml`)
