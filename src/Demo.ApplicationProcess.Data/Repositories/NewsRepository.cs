@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Demo.ApplicationProcess.Data.Extensions;
 using Demo.ApplicationProcess.Domain.Entities;
@@ -35,11 +34,11 @@ namespace Demo.ApplicationProcess.Data.Repositories
         /// <param name="page"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<List<NewsEntity>> GetAllAsync(string search = "", string sort = "Id", string order = "Asc", int size = 10, int page = 1, CancellationToken token = default) => _context.News
+        public Task<List<NewsEntity>> GetAllAsync(string search = "", string sort = "Id", string order = "Asc", int size = 10, int page = 1) => _context.News
             .Where(w => w.Title.Contains(search) || w.Description.Contains(search))
             .OrderByFx(sort, order)
             .Skip((page - 1) * size).Take(size)
-            .ToListAsync(token);
+            .ToListAsync();
 
         /// <summary>
         /// Get News by id
@@ -47,7 +46,7 @@ namespace Demo.ApplicationProcess.Data.Repositories
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public Task<NewsEntity> GetByIdAsync(int id, CancellationToken token = default) => _context.News.Where(a => a.Id == id).FirstOrDefaultAsync(token);
+        public Task<NewsEntity> GetByIdAsync(int id) => _context.News.FirstOrDefaultAsync(a => a.Id == id);
 
         /// <summary>
         /// Add News
@@ -55,11 +54,11 @@ namespace Demo.ApplicationProcess.Data.Repositories
         /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<NewsEntity> AddAsync(NewsEntity entity, CancellationToken token = default)
+        public async Task<NewsEntity> AddAsync(NewsEntity entity)
         {
-            await _context.News.AddAsync(entity, token);
+            await _context.News.AddAsync(entity);
 
-            await _context.SaveChangesAsync(token);
+            await _context.SaveChangesAsync();
 
             return entity;
         }
@@ -70,11 +69,12 @@ namespace Demo.ApplicationProcess.Data.Repositories
         /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task UpdateAsync(NewsEntity entity, CancellationToken token = default)
+        public async Task UpdateAsync(NewsEntity entity)
         {
-            _context.News.Update(entity);
+            _context.News.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
 
-            await _context.SaveChangesAsync(token);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
@@ -83,11 +83,11 @@ namespace Demo.ApplicationProcess.Data.Repositories
         /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task DeleteAsync(NewsEntity entity, CancellationToken token = default)
+        public async Task DeleteAsync(NewsEntity entity)
         {
             _context.News.Remove(entity);
 
-            await _context.SaveChangesAsync(token);
+            await _context.SaveChangesAsync();
         }
     }
 }

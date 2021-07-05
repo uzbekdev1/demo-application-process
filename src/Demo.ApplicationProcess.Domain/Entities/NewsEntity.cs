@@ -14,8 +14,6 @@ namespace Demo.ApplicationProcess.Domain.Entities
 
         public string Description { get; set; }
 
-        public decimal Price { get; set; }
-
         public DateTime PostDate { get; set; } 
 
     }

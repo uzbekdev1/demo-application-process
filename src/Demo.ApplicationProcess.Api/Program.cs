@@ -10,9 +10,7 @@ namespace Demo.ApplicationProcess.Api
     {
 
         public static void Main(string[] args)
-        {
-            Console.Title = "AwwCor.ApplicationProcess - April,2021";
-
+        { 
             CreateHostBuilder(args).Build().Run();
         }
 

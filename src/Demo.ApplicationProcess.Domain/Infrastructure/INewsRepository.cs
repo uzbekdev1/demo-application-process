@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Demo.ApplicationProcess.Domain.Entities;
 
@@ -20,7 +19,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="order"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        Task<List<NewsEntity>> GetAllAsync(string search = "", string sort = "Id", string order = "Asc", int size = 10, int page = 1, CancellationToken token = default);
+        Task<List<NewsEntity>> GetAllAsync(string search = "", string sort = "Id", string order = "Asc", int size = 10, int page = 1);
 
         /// <summary>
         /// Get News by id
@@ -28,7 +27,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<NewsEntity> GetByIdAsync(int id, CancellationToken token = default);
+        Task<NewsEntity> GetByIdAsync(int id);
 
         /// <summary>
         /// Add News
@@ -36,7 +35,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<NewsEntity> AddAsync(NewsEntity entity, CancellationToken token = default);
+        Task<NewsEntity> AddAsync(NewsEntity entity);
 
         /// <summary>
         /// Update News
@@ -44,7 +43,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task UpdateAsync(NewsEntity entity, CancellationToken token = default);
+        Task UpdateAsync(NewsEntity entity);
 
         /// <summary>
         /// Update News
@@ -52,7 +51,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task DeleteAsync(NewsEntity entity, CancellationToken token = default);
+        Task DeleteAsync(NewsEntity entity);
 
     }
 }

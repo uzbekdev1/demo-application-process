@@ -24,7 +24,6 @@ namespace Demo.ApplicationProcess.IntegrationTest
         /// Client factory
         /// </summary>
         private readonly HttpClient _client;
-        private readonly CancellationTokenSource _source;
 
         private static NewsModel MakeMockModel(string name)
         {
@@ -52,8 +51,6 @@ namespace Demo.ApplicationProcess.IntegrationTest
                 .UseStartup<Startup>());
 
             _client = server.CreateClient();
-
-            _source = new CancellationTokenSource();
         }
 
         // POST: api/News
@@ -64,14 +61,13 @@ namespace Demo.ApplicationProcess.IntegrationTest
         {
             // Arrange
             var model = MakeMockModel(name);
-            var token = CancellationToken.None;
 
             // Act
-            var request = await _client.PostAsJsonAsync("/api/News", model, token);
+            var request = await _client.PostAsJsonAsync("/api/News", model);
 
             // Assert
             Assert.Equal(HttpStatusCode.Created, request.StatusCode);
-            var response = await request.Content.ReadFromJsonAsync<NewsDto>(cancellationToken: token);
+            var response = await request.Content.ReadFromJsonAsync<NewsDto>();
             Assert.NotNull(response);
             Assert.Equal(model.Title, response.Title);
             Assert.Equal(model.Description, response.Description);
@@ -85,12 +81,11 @@ namespace Demo.ApplicationProcess.IntegrationTest
         {
             // Arrange
             var dto = MakeMockDto("AAAAAA");
-            var token = _source.Token;
             var id = 1;
             await Add_Many("AAAAAA");
 
             // Act 
-            var item = await _client.GetFromJsonAsync<NewsDto>($"/api/News/{id}", token);
+            var item = await _client.GetFromJsonAsync<NewsDto>($"/api/News/{id}");
 
             // Assert
             Assert.NotNull(item);
@@ -108,11 +103,10 @@ namespace Demo.ApplicationProcess.IntegrationTest
             {
                 MakeMockDto("AAAAAA")
             };
-            var token = _source.Token;
             await Add_Many("AAAAAA");
 
             // Act 
-            var items = await _client.GetFromJsonAsync<List<NewsDto>>("/api/News?Sort=Id&Order=Desc", token);
+            var items = await _client.GetFromJsonAsync<List<NewsDto>>("/api/News?Sort=Id&Order=Desc");
 
             // Assert
             Assert.NotNull(items);
@@ -128,26 +122,24 @@ namespace Demo.ApplicationProcess.IntegrationTest
         {
             // Arrange
             var model = MakeMockModel(name);
-            var token = CancellationToken.None;
 
             // Act
-            var request = await _client.PutAsJsonAsync($"/api/News/{id}", model, token);
+            var request = await _client.PutAsJsonAsync($"/api/News/{id}", model);
 
             // Assert
             Assert.True(request.IsSuccessStatusCode);
         }
 
         // DELETE: api/News
-        [Theory]
-        [InlineData(1)]
+        [Fact]
         [Order(5)]
-        public async Task Delete_One(int id)
+        public async Task Delete_One()
         {
             // Arrange
-            var token = CancellationToken.None;
+            var id = 1;
 
             // Act
-            var request = await _client.DeleteAsync($"/api/News/{id}", token);
+            var request = await _client.DeleteAsync($"/api/News/{id}");
 
             // Assert
             Assert.True(request.IsSuccessStatusCode);

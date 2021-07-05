@@ -16,8 +16,6 @@ namespace Demo.ApplicationProcess.UnitTest
     public class NewsRepositoryTest
     {
 
-        private readonly CancellationTokenSource _source;
-
         private static NewsEntity MakeMockEntity(int id, string name)
         {
             return new()
@@ -25,14 +23,8 @@ namespace Demo.ApplicationProcess.UnitTest
                 Id = id,
                 Title = name,
                 Description = name,
-                PostDate = DateTime.Now,
-                Price = 100m
+                PostDate = DateTime.Now
             };
-        }
-
-        public NewsRepositoryTest()
-        {
-            _source = new CancellationTokenSource();
         }
 
         /// <summary>
@@ -43,19 +35,17 @@ namespace Demo.ApplicationProcess.UnitTest
         public async Task Add_One()
         {
             // Arrange
-            var token = _source.Token;
             var entity = MakeMockEntity(1, "AAAAAA");
 
             // Act 
             var repo = new Mock<INewsRepository>();
-            repo.Setup(c => c.AddAsync(entity, token)).ReturnsAsync(entity);
+            repo.Setup(c => c.AddAsync(entity)).ReturnsAsync(entity);
 
             // Assert
-            var item = await repo.Object.AddAsync(entity, token);
+            var item = await repo.Object.AddAsync(entity);
             Assert.IsNotNull(item);
             Assert.AreEqual(entity.Title, item.Title);
             Assert.AreEqual(entity.Description, item.Description);
-            Assert.AreEqual(entity.Price, item.Price);
         }
 
 
@@ -67,7 +57,6 @@ namespace Demo.ApplicationProcess.UnitTest
         public async Task Get_All()
         {
             // Arrange
-            var token = _source.Token;
             var entities = new List<NewsEntity>
             {
                 MakeMockEntity(1, "AAAAAA")
@@ -75,15 +64,14 @@ namespace Demo.ApplicationProcess.UnitTest
 
             // Act 
             var repo = new Mock<INewsRepository>();
-            repo.Setup(c => c.GetAllAsync("", "Id", "Desc", 10, 1, token)).ReturnsAsync(entities);
+            repo.Setup(c => c.GetAllAsync("", "Id", "Desc", 10, 1)).ReturnsAsync(entities);
 
             // Assert
-            var items = await repo.Object.GetAllAsync("", "Id", "Desc", 10, 1, token);
+            var items = await repo.Object.GetAllAsync("", "Id", "Desc", 10, 1);
             Assert.IsNotNull(items);
             Assert.AreEqual(entities.Count, items.Count);
             Assert.AreEqual(entities[0].Title, items[0].Title);
             Assert.AreEqual(entities[0].Description, items[0].Description);
-            Assert.AreEqual(entities[0].Price, items[0].Price);
         }
 
         /// <summary>
@@ -97,19 +85,17 @@ namespace Demo.ApplicationProcess.UnitTest
         public async Task Get_By_Id(int id, string name)
         {
             // Arrange
-            var token = _source.Token;
             var entity = MakeMockEntity(id, name);
 
             // Act 
             var repo = new Mock<INewsRepository>();
-            repo.Setup(c => c.GetByIdAsync(id, token)).ReturnsAsync(entity);
+            repo.Setup(c => c.GetByIdAsync(id)).ReturnsAsync(entity);
 
             // Assert
-            var item = await repo.Object.GetByIdAsync(id, token);
+            var item = await repo.Object.GetByIdAsync(id);
             Assert.IsNotNull(item);
             Assert.AreEqual(entity.Title, item.Title);
             Assert.AreEqual(entity.Description, item.Description);
-            Assert.AreEqual(entity.Price, item.Price);
         }
 
 
@@ -122,15 +108,14 @@ namespace Demo.ApplicationProcess.UnitTest
         public async Task Update_One(int id)
         {
             // Arrange
-            var token = _source.Token;
             var entity = MakeMockEntity(id, "AAAAAA");
 
             // Act 
             var repo = new Mock<INewsRepository>();
-            repo.Setup(c => c.UpdateAsync(entity, token));
+            repo.Setup(c => c.UpdateAsync(entity));
 
             // Assert
-            await repo.Object.UpdateAsync(entity, token);
+            await repo.Object.UpdateAsync(entity);
         }
 
         /// <summary>
@@ -142,15 +127,14 @@ namespace Demo.ApplicationProcess.UnitTest
         public async Task Delete_One(int id)
         {
             // Arrange
-            var token = _source.Token;
             var entity = MakeMockEntity(id, "AAAAAA");
 
             // Act 
             var repo = new Mock<INewsRepository>();
-            repo.Setup(c => c.UpdateAsync(entity, token));
+            repo.Setup(c => c.UpdateAsync(entity));
 
             // Assert
-            await repo.Object.DeleteAsync(entity, token);
+            await repo.Object.DeleteAsync(entity);
         }
     }
 }

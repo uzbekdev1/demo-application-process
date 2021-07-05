@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Demo.ApplicationProcess.Domain.Dtos;
 using Demo.ApplicationProcess.Domain.Models;
@@ -22,7 +21,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="page"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<IEnumerable<NewsDto>> GetAllNewsAsync(string search = "", string sort = "Id", string order = "Asc", int size = 10, int page = 1, CancellationToken token = default);
+        Task<IEnumerable<NewsDto>> GetAllNewsAsync(string search = "", string sort = "Id", string order = "Asc", int size = 10, int page = 1 );
 
         /// <summary>
         /// Get News by id
@@ -30,7 +29,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<NewsDto> GetNewsByIdAsync(int id, CancellationToken token = default);
+        Task<NewsDto> GetNewsByIdAsync(int id);
 
         /// <summary>
         /// Add News 
@@ -38,7 +37,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="model"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task<NewsDto> AddNewsAsync(NewsModel model, CancellationToken token = default);
+        Task<NewsDto> AddNewsAsync(NewsModel model);
 
         /// <summary>
         /// Update News 
@@ -47,7 +46,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="model"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task UpdateNewsAsync(int id, NewsModel model, CancellationToken token = default);
+        Task UpdateNewsAsync(int id, NewsModel model);
 
         /// <summary>
         /// Update News 
@@ -55,7 +54,7 @@ namespace Demo.ApplicationProcess.Domain.Infrastructure
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        Task DeleteNewsAsync(int id, CancellationToken token = default);
+        Task DeleteNewsAsync(int id);
 
     }
 }
