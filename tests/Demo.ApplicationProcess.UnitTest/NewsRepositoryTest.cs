@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Demo.ApplicationProcess.Domain.Entities;
 using Demo.ApplicationProcess.Domain.Infrastructure;
