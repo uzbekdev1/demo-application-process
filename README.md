@@ -43,26 +43,41 @@
 
 - Go to root (`cd .\nginx`)
 - Build image (`docker-compose build`)
-- Run image (`docker-compose up`)
+- Run image (`docker-compose up -d --scale api=10`)
 - Open in this portal (`http://localhost:5000`)
 
 # Haproxy balancer:
 
 - Go to root (`cd .\haproxy`)
 - Build image (`docker-compose build`)
-- Run image (`docker-compose up`)
+- Run image (`docker-compose up -d --scale api=10`)
 - Open in this portal (`http://localhost:5000`)
-- Admin acess (`http://localhost:5001`)
+- Admin access (`http://localhost:5001`)
 
-# Envoy balancer:
+# Envoy cluster:
 
 - Go to root (`cd .\envoy`)
 - Build image (`docker-compose build`)
-- Run image (`docker-compose up`)
+- Run image (`docker-compose up -d --scale api=10`)
 - Open in this portal (`http://localhost:5000`)
-- Stats profile (`http://localhost:5000/stats`)
+- Admin access (`http://localhost:5001`)
 
-# Kubernetes cluster:
+# Traefik proxy:
+
+- Go to root (`cd .\traefik`)
+- Build image (`docker-compose build`)
+- Run image (`docker-compose up -d --scale api=10`)
+- Open in this portal (`http://localhost:5000`)
+- Admin access (`http://localhost:5001`)
+
+# Local kubernetes:
+
+- Install (`choco install minikube`)
+- Start (`minikube start`)
+- Dashboard (`minikube dashboard`)
+- Delete (`minikube delete --all`)
+
+# Deploy kubernetes:
 
 - Go to templates (`cd .\kubernetes`)
 - Create deployment (`kubectl create -f deployment.yaml`)

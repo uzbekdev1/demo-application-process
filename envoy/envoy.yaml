@@ -1,16 +1,16 @@
 admin:
-  access_log_path: /tmp/admin_access.log
+  access_log_path: "/dev/null"
   address:
     socket_address:
       protocol: TCP
       address: 0.0.0.0
-      port_value: 9901
+      port_value: 8081
 static_resources:
   listeners:
     - address:
         socket_address:
           address: 0.0.0.0
-          port_value: 10000
+          port_value: 8080
       filter_chains:
         - filters:
             - name: envoy.filters.network.http_connection_manager
@@ -43,5 +43,50 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      address: api
+                      address: envoy_api_1
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_2
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_3
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_4
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_5
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_6
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_7
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_8
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_9
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: envoy_api_10
                       port_value: 80

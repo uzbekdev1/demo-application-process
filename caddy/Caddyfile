@@ -1,0 +1,14 @@
+{
+    auto_https disable_redirects
+    auto_https off
+}
+
+localhost
+
+reverse_proxy / {
+	to api:80 
+	health_path /health
+	health_status 200
+	health_interval 10s
+}
+ 

@@ -1,13 +1,13 @@
 version: "3.9"
 
 services:
-  haproxy:
+  envoy:
     image: envoyproxy/envoy-dev:latest
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml:ro
     ports:
-      - "5001:9901"
-      - "5000:10000"
+      - "5000:8080"
+      - "5001:8081"
     depends_on:
       - api
     networks:

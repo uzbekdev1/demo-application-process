@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  traefik:
+    image: traefik:v2.5
+    container_name: "traefik"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.toml:/etc/traefik/traefik.toml:ro
+    ports:
+      - "5000:80"
+      - "5001:8080"
+    depends_on:
+      - api
+    networks:
+      - my_network
+
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.app.loadbalancer.server.port=80"
+      - "traefik.http.routers.app.rule=Host(`localhost`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app-http.rule=Host(`localhost`)"
+      - "traefik.http.routers.app-http.entrypoints=web"
+    environment:
+      ASPNETCORE_URLS: http://+:80
+    ports:
+      - "80"
+    networks:
+      - my_network
+    restart: always
+
+networks:
+  my_network:
+    driver: bridge
