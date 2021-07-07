@@ -70,6 +70,15 @@
 - Open in this portal (`http://localhost:5000`)
 - Admin access (`http://localhost:5001`)
 
+
+# Caddy proxy:
+
+- Go to root (`cd .\caddy`)
+- Build image (`docker-compose build`)
+- Run image (`docker-compose up -d --scale api=10`)
+- Open in this portal (`http://localhost:5000`)
+- Admin access (`http://localhost:5001`)
+
 # Local kubernetes:
 
 - Install (`choco install minikube`)
